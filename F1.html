@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flipkart - Home</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f1f3f6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  header {
+    background-color: #eae9f5;
+    color: hwb(239 18% 29%);
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  nav {
+    background-color: #1565c0;
+    padding: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+
+/* login section */
+
+.login-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .login-form input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+   /* Categories Section */
+   .categories {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  .categories div {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .categories div:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    background-color: #f0f0f0;
+    transition: 0.3s ease-in-out;
+  }
+
+  .categories img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: 250px;
+  }
+/* Table */
+table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid hsl(240, 70%, 55%);
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+/* Electronics Section */
+.electronics-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .electronics-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .electronics-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .electronics-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .electronics-item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #1565c0;
+  }
+
+  .electronics-item p {
+    font-size: 1rem;
+    color: #333;
+  }
+  /* Grocery Section */
+  
+  .grocery-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .grocery-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    margin: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .grocery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .grocery-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .grocery-item h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #1565c0;
+  }
+
+  .grocery-item p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+
+  .search-bar {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar input {
+    width: 60%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+  }
+
+  .search-bar button {
+    background-color: #ff9f00;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+  }
+
+  .content {
+    flex: 1;
+    padding: 20px;
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+  footer {
+    background-color: #333333;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+    }
+    .search-bar {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  .box {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    flex: 1;
+    max-width: 150px;
+    min-width: 100px;
+}
+
+:root {
+  --bg-color: #f1f3f6;
+  --text-color: #000;
+  --header-bg: #eae9f5;
+  --nav-bg: #1565c0;
+  --card-bg: white;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --header-bg: #1f1f1f;
+  --nav-bg: #0d47a1;
+  --card-bg: #1e1e1e;
+  --card-shadow: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--header-bg);
+}
+
+nav {
+  background-color: var(--nav-bg);
+}
+
+.categories div, .electronics-item, .grocery-item {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+button {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ff9f00;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://blog.indifi.com/wp-content/uploads/2019/12/Operational-Cost-Cutting-by-being-on-Flipkart--500x250.png" alt="Flipkart Logo" style="max-height: 50px;">
+  Welcome To Flipkart...
+</header>
+
+<nav>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('electronics')">Electronics</a>
+  <a onclick="showPage('grocery')">Grocery</a>
+  <a onclick="showPage('about')">About</a>
+  <a onclick="showPage('contact')">Contact</a>
+  <div class="search-bar">
+    <input type="text" placeholder="Search for products, brands, and more">
+    <button>Search</button>
+  </div>
+</nav>
+
+<button class="login-button" onclick="openLoginForm()">Login</button>
+
+    <div class="login-form" id="loginForm">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <input type="Email"placeholder="Email"required>
+        <button class="login-button">Submit</button>
+        <button class="close-btn" onclick="closeLoginForm()">Close</button>
+    </div>
+
+<div id="home" class="content active">
+  <h1>Categories</h1>
+  <p>Welcome to Flipkart! Choose a category to explore.</p>
+  <section class="categories">
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUw4YBP6z2HvnZaceVr1pquQ2MV8YR4q94nNyh-CMmPmd3qejiDUVADEM&s" alt="Electronics">
+      <p>Electronics</p>
+    </div>
+    <div>
+      <img src="https://software-lab-b67.netlify.app/f_fashion.jpg" alt="Fashion">
+      <p>Fashion</p>
+    </div>
+    <div>
+      <img src="https://software-lab-b67.netlify.app/Flipkart-Home-appliances.jpg" alt="Home Appliances">
+      <p>Home Appliances</p>
+    </div>
+  </section>
+</div>
+  <div id="home" class="content active">
+    <section class="categories">
+    <div>
+      <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcStnOyaPTBIIpi0G111pkYsZ5Gn2Gz72mNmX2CUJTTep0hnjIjbCf1Vpdh0UefKsJKPaWc2gxqsm_L8A48WmrWYBX4CnUurmngQFPiF3NpqtBZMCSn0LwS0FQ&usqp=CAE" alt="Home Appliances">
+      <p>Footwears</p>
+    </div>
+    <div>
+      <img src="https://imagesvs.oneindia.com/img/2017/07/flipkart-070717-07-1499423765.jpg" alt="Home Appliances">
+      <p>Bags </p>
+    </div>
+    <div>
+      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcR0Gpr-KwaYhGJzocd12fDbChvx2Hhp7fFyPqcxMQtD6IPrzum3zTm36tv3-HnZr3SHTUFsW-dezNsE59yCyZOWRPuAHvMa8taoiJXzQ9WffGhvY7i8fYkX&usqp=CAE" alt="Home Appliances">
+      <p>Mobile </p>
+    </div>
+  </section>
+</div>
+
+<div id="electronics" class="content">
+  <h1>Electronics Collection</h1>
+  <p>Latest gadgets and electronics.</p>
+  <section class="electronics-container">
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnUuCf464u-JjNe3zE3H4pFQsU661FRi59BFnEctzb6ArFLoARnePkW18&s" alt="Smartphone">
+      <h3>Smartphone</h3>
+      <p>Starting From 15k</p>
+      <p>Latest high-performance smartphones with advanced features.</p>
+    </div>
+
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WKw182Um4C_7AJmKGyLCY8H3oKtqppC6xhOfCA1mF2vWbGgVf4N7MxU&s" alt="Laptop">
+      <h3>Laptop</h3>
+      <p>Starting From 35K</p>
+      <p>Powerful laptops for work, gaming, and personal use.</p>
+    </div>
+
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbQMbHBIWVDxUzLKJfLihPZon7uTK1A9aEB0HknWJy8Th3HFZgTvgmo44&s" alt="Bluetooth Headphones">
+      <h3>Bluetooth Headphones</h3>
+      <p>Starting From 800</p>
+      <p>Wireless headphones with deep bass and crystal-clear sound.</p>
+    </div>
+
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxSTrvD8g98rVL_-mZQ5QER2GCmUXBkGbCTXelYM0CJ35zc2v-N3lELKI&s" alt="Television">
+      <h3>Television</h3>
+      <p>Starting From 40K</p>
+      <p>Smart TVs with 4K Ultra HD resolution and streaming features.</p>
+    </div>
+
+
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQRDfJCdzmlKEvP87QNb7QXomvIQXC4LkWIugsw5LKfQY79OQ" alt="Television">
+      <h3>Neck Band</h3>
+      <p>Starting From 40K</p>
+      <p>Wired  headphones with deep bass and crystal-clear sound</p>
+    </div>
+
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkWugzZBRiIjIQFVX-haRwYEoXZpBxsShDzm-o_zKCL_E87Nm0GKBQ_ck&s" alt="Television">
+      <h3>Charger</h3>
+      <p>Starting From 40K</p>
+      <p>Mobile charger with fast charging feature</p>
+    </div>
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkWugzZBRiIjIQFVX-haRwYEoXZpBxsShDzm-o_zKCL_E87Nm0GKBQ_ck&s" alt="Television">
+      <h3>Power Bank</h3>
+      <p>Starting From 30K</p>
+      <p>Mobile charger with fast charging feature Power Bank</p>
+    </div>
+ 
+    <div class="electronics-item">
+      <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS7X-lIgI0GW_86oHHdBXCFeXHp8TnFKL1XyP1wlxIeVO-Uu_-fKxUwH-L3usomrEg5fuCMt_dfFmp79goOL4pjFdMoyosA9m4DtawC6XXkTSgjbK7BlwdUi2Q" alt="Television">
+      <h3>CCTV</h3>
+      <p>Starting From 80K</p>
+      <p>CCTV available with 4K resolution and night vision</p>
+    </div>
+
+    <div class="electronics-item">
+    <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSX4QwYSRTtEZSWX3gZj3UcVKSkN2mNFCE3FkzqMmPdXXf-joCkRvD2h9UFoxPcZn5KPvNkPO2Xzd2kEreNp4V1TYTGCy1B3qsWv3A-Dyw9JqSw9sK9EYI4NA" alt="Television">
+    <h3>Laptop</h3>
+    <p>Starting From 80K</p>
+    <p>Laptops are available at resonable rate</p>
+  </div>
+  </section>
+
+
+  <h2>Electronics</h2>
+  <table border="1">
+      <tr>
+          <th>Item</th>
+          <th>Price</th>
+      </tr>
+      <tr>
+          <td>Smartphone</td>
+          <td>$699</td>
+      </tr>
+      <tr>
+          <td>Laptop</td>
+          <td>$999</td>
+      </tr>
+      <tr>
+        <td>LED</td>
+        <td>$999</td>
+    </tr>
+    <tr>
+      <td>Headphones</td>
+      <td>$999</td>
+  </tr>
+
+  <tr>
+    <td>Neck Band</td>
+    <td>$999</td>
+</tr>
+
+<tr>
+  <td>Mobile Charger</td>
+  <td>$555</td>
+</tr>
+
+<tr>
+  <td>PowewrBank</td>
+  <td>$555</td>
+</tr>
+
+
+<tr>
+  <td>CCTV Camera</td>
+  <td>$855</td>
+</tr>
+
+
+<tr>
+  <td>Laptop</td>
+  <td>$655</td>
+</tr>
+
+  </table>
+</div>
+
+
+<div id="grocery" class="content">
+  <h1>Grocery Collection</h1>
+  <p>Fresh groceries delivered to your doorstep.</p>
+  <section class="grocery-container">
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwuM_7P265R_Q01qC1sIJrp2_IqWtg6wB2RIv9HnT5ni_N1L9kughY&usqp=CAE&s" alt="Wheat">
+      <h3>Wheat</h3>
+      <p>High-quality wheat for making fresh rotis and bread.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnFjjMmMYrGdwxx0rcuKFqMlcY8Juj5_4ZNg&s" alt="Rice">
+      <h3>Rice</h3>
+      <p>Premium basmati and non-basmati rice varieties.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNzQayOeRQEg9ws4A4lHK6BwCrW5musyK7XMxx7gm33oQjMOLk_m867SqSphSrYjthAGJMeg&s" alt="Oil">
+      <h3>Cooking Oil</h3>
+      <p>Healthy and pure edible oils for everyday cooking.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLQneF4gPKMzxEnH3WsU1UzHnzu0qzwsxEUPaOxHDqs82tdchnAAUB9kqk-yfrjxhEDVKt&s" alt="Grains">
+      <h3>Grains</h3>
+      <p>Nutritious grains for a balanced diet.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRifspy0Z6zkSEuvAizQlK9NuOcivYJrXKGBg&s" alt="Flour">
+      <h3>Flour</h3>
+      <p>Freshly milled flour for all your baking needs.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR9_atO0pbAwQDZ-KYQDi5GmBNMOGlPsv-RqbpLSv2aqTzjjA" alt="Shampoo">
+      <h3>Shampoo</h3>
+      <p>Best quality shampoos for hair nourishment and care.</p>
+    </div>
+
+    <div class="grocery-item">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvVY5yXJ2XR8V5IYqPsJIEQxRsp1Bkj9ESg&s" alt="Grains">
+      <h3>Grains</h3>
+      <p>Best quality Garins are available.</p>
+    </div>
+    
+  </section>
+  <h2>Grocery</h2>
+    <table border="1">
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Wheat</td>
+            <td>$2.5</td>
+        </tr>
+        <tr>
+            <td>Rice</td>
+            <td>$1.5</td>
+        </tr>
+        <tr>
+          <td>Grains</td>
+          <td>$1.5</td>
+      </tr>
+      <tr>
+        <td>Oil</td>
+        <td>$1.5</td>
+    </tr>
+    <tr>
+      <td>Shampoo</td>
+      <td>$1.5</td>
+  </tr>
+  <tr>
+    <td>Protien</td>
+    <td>$1.5</td>
+</tr>
+<tr>
+  <td>Garins</td>
+  <td>$1.5</td>
+</tr>
+
+    </table>
+</div>
+
+
+
+<div id="about" class="content">
+  <h1>About Us</h1>
+  <p>Flipkart is India's leading online shopping platform.</p>
+
+    <section>
+      <h2>What is Flipkart?</h2>
+      <p>Flipkart is one of India’s leading e-commerce platforms, offering a wide range of products including electronics, clothing, home essentials, and much more. Founded in 2007, Flipkart has revolutionized the online shopping experience in India by providing seamless service, competitive prices, and an extensive product selection.</p>
+      <p>Flipkart also offers services such as quick delivery, easy returns, and various payment options including cash on delivery, making it convenient for millions of customers across the country.</p>
+    </section>
+
+
+</div>
+<div id="contact" class="content">
+  <h1>Contact Us</h1>
+  <p>Email: support@flipkart.com</p>
+  <section>
+    <h2>Flipkart Image</h2>
+    
+  
+    <h2>Flipkart Video</h2>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/zZj3NZqdmOk?si=fc4eiiyK8qZqGk1z"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
+    </iframe>
+  <hr>
+    <h2>Flipkart GPS Location</h2>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.2360837289516!2d78.99343757248666!3d21.023237680624664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd49526bf3e81b5%3A0x2e146afc5aab481a!2sFlipkart%20Grocery%20warehouse!5e0!3m2!1sen!2sin!4v1737625229831!5m2!1sen!2sin"
+      width="400"
+      height="300"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-cross-origin">
+    </iframe> 
+<hr>
+    <h2>Audio Example</h2>
+      <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <hr>
+  </section>
+  <div class="options">
+  <button onclick="location.href='F1.html'">Back to Home</button>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Flipkart. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function showPage(pageId) {
+    let pages = document.querySelectorAll('.content');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+  }
+</script>
+<script>
+  function openLoginForm() {
+      document.getElementById("loginForm").style.display = "block";
+  }
+  function closeLoginForm() {
+      document.getElementById("loginForm").style.display = "none";
+  }
+</script>
+
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+<script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+  
+      // Save theme preference
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    }
+  
+    // Load saved theme preference
+    window.onload = function () {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    };
+  </script>
+  
+
+</body>
+</html>
